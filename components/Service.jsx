@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 function Service() {
     return (
         <>
-
             <div className='links'>
                 <nav>
                     <div className='home'>
@@ -21,15 +20,14 @@ function Service() {
                     </div>
                 </nav>
             </div>
-            
             <div> this is Service page </div>
-            <ul className=''>
+            {/* // this is list of services we provide */}
+            <ul >
                 <li className='a'>Software and IT solution</li>
                 <li className='b'>training and certification</li>
                 <li className='c'>Yoga classes</li>
                 <li className='d'>Grocery store</li>
             </ul>
-
         </>
     )
 }
