@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 // ---------state management using hooks like useState and useEffect in functional component
-
 function StateExp() {
     // implementation of useState hook
     const [count, setCount] = useState(0)
