@@ -64,12 +64,10 @@ function SignUp() {
                             <FormLabel>Password</FormLabel>
                             <Input type="password" placeholder='Password' mb="10" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
                         </FormControl>
-                        <Stack direction='row' spacing={10} align='center'>
-                            <Stack direction='row' spacing={10} align='center' w="full" >
-                                <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" mt="-5" onClick={handleSubmission}>
-                                    Sign Up
-                                </Button>
-                            </Stack>
+                        <Stack direction='row' spacing={10} align='center' w="full" >
+                            <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" mt="-5" onClick={handleSubmission}>
+                                Sign Up
+                            </Button>
                         </Stack>
                         {/* used for switching to dark mode */}
                         <FormControl display="flex" alignItems="center">
@@ -86,7 +84,6 @@ function SignUp() {
                         <Text>Already Registered ?<Link to="/signIn" >Login</Link> <br /></Text>
                     </Stack>
                 </Box>
-
             </form>
         </div>
     )
@@ -121,4 +118,7 @@ export default SignUp
 
 
 
-                
+
+
+
+
