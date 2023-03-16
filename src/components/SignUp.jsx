@@ -30,7 +30,7 @@ function SignUp() {
             await updateProfile(user, {
                 displayName: value.userName
             })
-            navigate("/")
+            navigate("/signIn")
         }).catch((err) => {
             setErrorMsg(alert(err.message))
         })
@@ -41,84 +41,86 @@ function SignUp() {
                 <Box display='flex'
                     alignItems='center'
                     justifyContent='center'
-                    width='20%'
-                    height="550px"
-                    mx={700}
+                    h="100vh"
                     rounded='lg' bg='formBackground'
-                    borderRadius="10px"
-                    my={200}
-                    pos="fixed"
-                    boxShadow='dark-lg' p='6'
-                >
-                    <Stack spacing={3} p={10}>
-                        <FormControl isRequired>
-                            <Heading ml="10" fontSize="30" mb="5">Sign Up</Heading>
-                            <FormLabel>User Name</FormLabel>
-                            <Input type="text" placeholder='UserName' onChange={e => setValue(prev => ({ ...prev, userName: e.target.value }))} />
-                        </FormControl>
-                        <FormControl isRequired>
-                            <FormLabel>Email</FormLabel>
-                            <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
-                        </FormControl>
-                        <FormControl isRequired>
-                            <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder='Password' mb="10" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
-                        </FormControl>
-                        <Stack direction='row' spacing={10} align='center' w="full" >
-                            <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" mt="-5" onClick={handleSubmission}>
-                                Sign Up
-                            </Button>
+                    borderRadius="md"
+                    >
+                        <Box  border="xl"
+                        boxShadow='dark-lg' p='6' borderRadius="md" >
+                        <Stack spacing={3} p={10}>
+                            <FormControl isRequired>
+                                <Heading ml="10" fontSize="30" mb="5">Sign Up</Heading>
+                                <FormLabel>User Name</FormLabel>
+                                <Input type="text" placeholder='UserName' onChange={e => setValue(prev => ({ ...prev, userName: e.target.value }))} />
+                            </FormControl>
+                            <FormControl isRequired>
+                                <FormLabel>Email</FormLabel>
+                                <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
+                            </FormControl>
+                            <FormControl isRequired>
+                                <FormLabel>Password</FormLabel>
+                                <Input type="password" placeholder='Password' mb="10" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
+                            </FormControl>
+                            <Stack direction='row' spacing={10} align='center' w="full" >
+                                <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" mt="-5" onClick={handleSubmission}>
+                                    Sign Up
+                                </Button>
+                            </Stack>
+                            {/* used for switching to dark mode */}
+                            <FormControl display="flex" alignItems="center">
+                                <FormLabel htmlFor="dark_mode" mb="0">
+                                    Enable Dark Mode?
+                                </FormLabel>
+                                <Switch
+                                    id="dark_mode"
+                                    colorScheme="teal"
+                                    size="lg"
+                                    onChange={toggleColorMode}
+                                />
+                            </FormControl>
+                            <Text>Already Registered ?<Link to="/" >SignIn</Link> <br /></Text>
                         </Stack>
-                        {/* used for switching to dark mode */}
-                        <FormControl display="flex" alignItems="center">
-                            <FormLabel htmlFor="dark_mode" mb="0">
-                                Enable Dark Mode?
-                            </FormLabel>
-                            <Switch
-                                id="dark_mode"
-                                colorScheme="teal"
-                                size="lg"
-                                onChange={toggleColorMode}
-                            />
-                        </FormControl>
-                        <Text>Already Registered ?<Link to="/signIn" >Login</Link> <br /></Text>
-                    </Stack>
-                </Box>
-            </form>
-        </div>
-    )
-}
-export default SignUp
+                        </Box>
+                    </Box>
+                </form>
+            </div>
+        )
+    }
+    export default SignUp
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                   
+               
+                
+             

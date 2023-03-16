@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useNavigate} from 'react'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Home from './components/Home';
@@ -7,6 +7,8 @@ import {auth} from "./firebase"
 
 function App() {
   const [userName,setUserName]=useState("")
+  
+
   useEffect(()=>{
     auth.onAuthStateChanged((user)=>{
       if(user){
@@ -18,11 +20,13 @@ function App() {
   },[])
   return (
     <div>
+ 
         <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signIn" element={<SignIn />} />
+         
+          <Route path="/" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>

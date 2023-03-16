@@ -10,8 +10,8 @@ function Home(props) {
         <>
         <Box w="100%" h="100vh" bg="formBackground">
         <Heading>Welcome to Home Page </Heading>
-        <Link to="/signIn">Login</Link><br />
-        <Link to="/signUp">Sign Up</Link>
+        {/* <Link to="/signIn">Login</Link><br />
+        <Link to="/signUp">Sign Up</Link> */}
         <FormControl display="flex" alignItems="center" justifyContent={'flex-end'}>
           <FormLabel htmlFor="dark_mode" mb="0">
             Enable Dark Mode?

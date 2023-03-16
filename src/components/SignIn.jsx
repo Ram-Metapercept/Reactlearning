@@ -8,9 +8,9 @@ import {
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
 // import { Link as ReachLink } from "@reach/router"
-<Link as={ReachLink} to='/home'>
+{/* <Link as={ReachLink} to='/home'>
     Home
-</Link>
+</Link> */}
 
 function SignIn() {
     const [value, setValue] = useState({
@@ -32,7 +32,7 @@ function SignIn() {
         signInWithEmailAndPassword(auth, value.email, value.password).then((res) => {
             const user = res.user
             console.log(user)
-            navigate("/")
+            navigate("/home")
         }).catch((err) => {
             setErrorMsg(alert(err.message))
         })
@@ -41,7 +41,7 @@ function SignIn() {
 
         <div>
             <form action="submit">
-
+{/* 
                 <Box display='flex'
                     alignItems='center'
                     justifyContent='center'
@@ -57,11 +57,23 @@ function SignIn() {
                     p={8}
                     boxShadow='dark-lg'
 
-                >
+                > */}
+                <Box display='flex'
+                    alignItems='center'
+                    justifyContent='center'
+                    h="100vh"
+               
+                
+                    rounded='lg' bg='formBackground'
+                    
+         
+                    border="xl"
+                    boxShadow='dark-lg' p='6'>
+                        <Box  boxShadow='dark-lg' p='6' borderRadius="md">
                     {/* implementation of chakra ui for form control  */}
                     <Stack spacing={3} p={30}>
                         <FormControl isRequired>
-                            <Heading ml={50} mb="5" fontSize="30">Login</Heading>
+                            <Heading ml={50} mb="5" fontSize="30">Sign In</Heading>
 
                             <FormLabel>Email</FormLabel>
                             <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
@@ -92,6 +104,7 @@ function SignIn() {
                             SignUp
                         </Link></Text>
                     </Stack>
+                    </Box>
                 </Box>
             </form>
         </div>
