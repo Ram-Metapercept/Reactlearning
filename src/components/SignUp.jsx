@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
-import { Box, Button, Stack, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import {
+    Box, Button, Stack, FormControl, FormLabel, Input, Switch,
+    useColorMode,
+    useColorModeValue, Heading, Text
+} from "@chakra-ui/react"
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { auth } from "../firebase"
@@ -10,10 +14,12 @@ function SignUp() {
         email: "",
         password: ""
     })
+    const { toggleColorMode } = useColorMode();
+    const formBackground = useColorModeValue('gray.100', 'gray.700');
     const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState("")
     const handleSubmission = () => {
-         // checking all fields are filled or not 
+        // checking all fields are filled or not 
         if (!value.userName || !value.email || !value.password) {
             return <h1> {setErrorMsg(alert("fill all fields"))}</h1>
         }
@@ -26,7 +32,7 @@ function SignUp() {
             })
             navigate("/")
         }).catch((err) => {
-           setErrorMsg(alert(err.message))
+            setErrorMsg(alert(err.message))
         })
     }
     return (
@@ -36,16 +42,18 @@ function SignUp() {
                     alignItems='center'
                     justifyContent='center'
                     width='20%'
-                    height="500px"
+                    height="550px"
                     mx={700}
                     border="1px"
-                    boxShadow="lg"
-                    rounded='lg' bg='white'
+                    rounded='lg' bg='formBackground'
                     borderRadius="10px"
-                    my={200}>
+                    my={200}
+                    pos="fixed"
+                    boxShadow='dark-lg' p='6'
+                >
                     <Stack spacing={3} p={10}>
                         <FormControl isRequired>
-                            <h1>Sign Up</h1>
+                            <Heading ml="10" fontSize="30" mb="5">Sign Up</Heading>
                             <FormLabel>User Name</FormLabel>
                             <Input type="text" placeholder='UserName' onChange={e => setValue(prev => ({ ...prev, userName: e.target.value }))} />
                         </FormControl>
@@ -58,13 +66,28 @@ function SignUp() {
                             <Input type="password" placeholder='Password' mb="10" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
                         </FormControl>
                         <Stack direction='row' spacing={10} align='center'>
-                            <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' onClick={handleSubmission}>
-                                Sign Up
-                            </Button>
+                            <Stack direction='row' spacing={10} align='center' w="full" >
+                                <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" mt="-5" onClick={handleSubmission}>
+                                    Sign Up
+                                </Button>
+                            </Stack>
                         </Stack>
-                        <p>Already Registered ?<Link to="/signIn">Login</Link> <br /></p>
+                        {/* used for switching to dark mode */}
+                        <FormControl display="flex" alignItems="center">
+                            <FormLabel htmlFor="dark_mode" mb="0">
+                                Enable Dark Mode?
+                            </FormLabel>
+                            <Switch
+                                id="dark_mode"
+                                colorScheme="teal"
+                                size="lg"
+                                onChange={toggleColorMode}
+                            />
+                        </FormControl>
+                        <Text>Already Registered ?<Link to="/signIn" >Login</Link> <br /></Text>
                     </Stack>
                 </Box>
+
             </form>
         </div>
     )
@@ -91,4 +114,11 @@ export default SignUp
 
 
 
-                
+
+
+
+
+
+
+
+
