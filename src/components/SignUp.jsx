@@ -44,7 +44,6 @@ function SignUp() {
                     width='20%'
                     height="550px"
                     mx={700}
-                    border="1px"
                     rounded='lg' bg='formBackground'
                     borderRadius="10px"
                     my={200}
@@ -122,3 +121,4 @@ export default SignUp
 
 
 
+                

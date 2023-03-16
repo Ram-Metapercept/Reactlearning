@@ -48,8 +48,6 @@ function SignIn() {
                     maxWidth="500px"
                     width='20%'
                     mx={700}
-                    border="1px"
-                    boxShadow="lg"
                     borderWidth={1}
                     rounded='lg' bg='formBackground'
                     borderRadius="8"
@@ -57,6 +55,7 @@ function SignIn() {
                     my={200}
                     opacity="1.2"
                     p={8}
+                    boxShadow='dark-lg'
 
                 >
                     {/* implementation of chakra ui for form control  */}
@@ -123,3 +122,4 @@ export default SignIn
 
 
 
+       
