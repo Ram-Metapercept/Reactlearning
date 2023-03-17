@@ -12,6 +12,7 @@ import { signInWithEmailAndPassword } from "firebase/auth"
     Home
 </Link> */}
 
+
 function SignIn() {
     const [value, setValue] = useState({
         email: "",
@@ -41,7 +42,7 @@ function SignIn() {
 
         <div>
             <form action="submit">
-{/* 
+                {/* 
                 <Box display='flex'
                     alignItems='center'
                     justifyContent='center'
@@ -62,48 +63,48 @@ function SignIn() {
                     alignItems='center'
                     justifyContent='center'
                     h="100vh"
-               
-                
+
+
                     rounded='lg' bg='formBackground'
-                    
-         
+
+
                     border="xl"
                     boxShadow='dark-lg' p='6'>
-                        <Box  boxShadow='dark-lg' p='6' borderRadius="md">
-                    {/* implementation of chakra ui for form control  */}
-                    <Stack spacing={3} p={30}>
-                        <FormControl isRequired>
-                            <Heading ml={50} mb="5" fontSize="30">Sign In</Heading>
+                    <Box boxShadow='dark-lg' p='6' borderRadius="md">
+                        {/* implementation of chakra ui for form control  */}
+                        <Stack spacing={3} p={30}>
+                            <FormControl isRequired>
+                                <Heading ml={50} mb="5" fontSize="30">Sign In</Heading>
 
-                            <FormLabel>Email</FormLabel>
-                            <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
-                        </FormControl>
-                        <FormControl isRequired>
-                            <FormLabel>Password</FormLabel>
-                            <Input type="password" placeholder='Password' mb="10" borderRadius="2" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
-                        </FormControl>
-                        <Stack direction='row' spacing={10} align='center'>
-                            <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' mt="-5" w="full" onClick={handleSubmission}>
-                                Login
-                            </Button>
+                                <FormLabel>Email</FormLabel>
+                                <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
+                            </FormControl>
+                            <FormControl isRequired>
+                                <FormLabel>Password</FormLabel>
+                                <Input type="password" placeholder='Password' mb="10" borderRadius="2" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
+                            </FormControl>
+                            <Stack direction='row' spacing={10} align='center'>
+                                <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' mt="-5" w="full" onClick={handleSubmission}>
+                                    Login
+                                </Button>
+                            </Stack>
+                            <FormControl display="flex" alignItems="center">
+                                {/* used for switching to dark mode */}
+                                <FormLabel htmlFor="dark_mode" mb="0">
+                                    Enable Dark Mode?
+                                </FormLabel>
+                                <Switch
+                                    id="dark_mode"
+                                    colorScheme="teal"
+                                    size="lg"
+                                    onChange={toggleColorMode}
+                                />
+                            </FormControl>
+                            {/* <Text>Create an account  <Link to="/signUp">Sign Up</Link> </Text> */}
+                            <Text>Create an account  <Link as={ReachLink} color='red' size="50" to='/signUp'>
+                                SignUp
+                            </Link></Text>
                         </Stack>
-                        <FormControl display="flex" alignItems="center">
-                            {/* used for switching to dark mode */}
-                            <FormLabel htmlFor="dark_mode" mb="0">
-                                Enable Dark Mode?
-                            </FormLabel>
-                            <Switch
-                                id="dark_mode"
-                                colorScheme="teal"
-                                size="lg"
-                                onChange={toggleColorMode}
-                            />
-                        </FormControl>
-                        {/* <Text>Create an account  <Link to="/signUp">Sign Up</Link> </Text> */}
-                        <Text>Create an account  <Link as={ReachLink} color='red' size="50" to='/signUp'>
-                            SignUp
-                        </Link></Text>
-                    </Stack>
                     </Box>
                 </Box>
             </form>
@@ -135,4 +136,4 @@ export default SignIn
 
 
 
-       
+

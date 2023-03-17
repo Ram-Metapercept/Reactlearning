@@ -44,8 +44,8 @@ function SignUp() {
                     h="100vh"
                     rounded='lg' bg='formBackground'
                     borderRadius="md"
-                    >
-                        <Box  border="xl"
+                >
+                    <Box border="xl"
                         boxShadow='dark-lg' p='6' borderRadius="md" >
                         <Stack spacing={3} p={10}>
                             <FormControl isRequired>
@@ -80,47 +80,47 @@ function SignUp() {
                             </FormControl>
                             <Text>Already Registered ?<Link to="/" >SignIn</Link> <br /></Text>
                         </Stack>
-                        </Box>
                     </Box>
-                </form>
-            </div>
-        )
-    }
-    export default SignUp
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                </Box>
+            </form>
+        </div>
+    )
+}
+export default SignUp
 
-                   
-               
-                
-             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
