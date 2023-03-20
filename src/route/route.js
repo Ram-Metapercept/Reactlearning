@@ -1,14 +1,12 @@
 const express=require("express")
 const router=express.Router()
-const newTask=require("../controller/taskController")
+const {addTask,getTask,updateTask,deleteTask}=require("../controller/taskController")
 
-router.post("/create",(req,res)=>{
-    console.log("test")
-})
+router.post("/create",addTask)
 
-// router.get("/getTask",getTask)
-// router.put("updateTask",updateTask)
-// router.delete("/deleteTask",deleteTask)
+router.get("/getTask",getTask)
+router.put("/updateTask",updateTask)
+router.delete("/deleteTask",deleteTask)
 
 
 

@@ -1,50 +1,105 @@
 const {Task}=require("../db/config")
+const {isValid}=require("../validation/validation")
 
-// exports {
-//     addTask
-// }
 
-function addTask(req,res){
-  console.log("1234")  
-    // try{
-    // let data=req.body
-    //     console.log(data)
+exports.addTask=async(req,res)=>{
 
-    // // await Task.set(data)
-    // // res.send({msg:"successfull"})
-    // }catch (error) {
-    //     console.log("This is the error :", error.message)
-    //     return res.status(500).send({ msg: "Error", error: error.message })
-    // }
+    try{
+    let {title,startDate,dueDate,taskStatus}=req.body
+    if (Object.keys(req.body).length === 0) {
+        return res.status(400).send({ status: false, message: "Kindly enter all the required details." })
+    }
+    
+    if (!isValid(title)||!isValid(startDate)||!isValid(dueDate)||!isValid(taskStatus)) {
+        return res.status(400).send({ status: false, message: "please fill all the field. " })
+    }
+
+
+    console.log(["inProgress","completed"].includes(taskStatus))
+    if(!["inProgress","completed"].includes(taskStatus)){
+        return res.status(400).send({ status: false, message: "please enter either inProgess or completed only " })
+    }
+  let a= await Task.add(req.body)
+    res.status(200).send({status:true,msg:"successfully added "})
+    }catch (error) {
+        console.log("This is the error :", error.message)
+        return res.status(500).send({ msg: "Error", error: error.message })
+    }
 
 }
 
-// exports.getTask=async function (req,res){
-//     console.log("1234")  
-//       try{
-//       data=req.body
+exports.getTask=async function (req,res){
   
-  
-//      let fetchedData= await Task.get()
-//      return res.status(200).send({ status: "true", message: "Success", data: fetchedData })
-//       }catch (error) {
-//           console.log("This is the error :", error.message)
-//           return res.status(500).send({ msg: "Error", error: error.message })
-//       }
-  
-//   }
+      try{
+    
+      let data= req.query
+      let {title,startDate,dueDate,taskStatus}=data
+      
+     
 
-//   exports.updateTask=async function (req,res){
-//     console.log("1234")  
-//       try{
-//       data=req.body
+      
+      
+  let usr=[]
+     let fetchedData= await Task.get(data)
+// const ids=fetchedData.docs.map((doc)=>doc.id)
+// console.log(ids)
+
+const a=fetchedData.docs.map((doc)=>({id:doc.id,...doc.data()}))
+  res.status(400).send({ status: false, message: "please enter either inProgess or completed only ",data:a})
+
+if(Object.keys(data).length!==0){
   
+    if(data.taskStatus==="inProgress"){
+   let d=a.filter((n)=>(n.taskStatus=="inProgress"))
+ 
+   res.status(200).send({ status: false, message: "succesfully fetched ",data:d})
+    }else if(data.taskStatus==="completed"){
+
+        let p=a.filter((m)=>(m.taskStatus=="completed"))
+        console.log(p)
+        res.status(200).send({ status: false, message: "succesfully fetched ",data:p})  
+    }
+}
+
+}
+catch (error) {
+          console.log("This is the error :", error.message)
+          return res.status(500).send({ msg: "Error", error: error.message })
+      }
   
-//      let fetchedData= await Task.get()
-//      return res.status(200).send({ status: "true", message: "Success", data: fetchedData })
-//       }catch (error) {
-//           console.log("This is the error :", error.message)
-//           return res.status(500).send({ msg: "Error", error: error.message })
-//       }
+  }
+
+exports.updateTask=async function (req,res){
+
+      try{
+      data=req.body
   
-//   }
+    const id=req.body.id
+    delete req.body.id
+     let updateData = await Task.doc(id).update(req.body)
+
+     return res.status(200).send({ status: "true", message: "Successfulluy data updated", data: updateData })
+      }catch (error) {
+          console.log("This is the error :", error.message)
+          return res.status(500).send({ msg: "Error", error: error.message })
+      }
+  
+  }
+
+
+exports.deleteTask=async function (req,res){
+    const id=req.body.id
+
+    try{
+    data=req.body
+
+   let deletedData= await Task.doc(id).delete()
+  
+   return res.status(200).send({ status: "true", message: "Successfully deleted"})
+   
+    }catch (error) {
+        console.log("This is the error :", error.message)
+        return res.status(500).send({ msg: "Error", error: error.message })
+    }
+
+}
