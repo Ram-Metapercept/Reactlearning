@@ -1,46 +1,57 @@
-import React from 'react'
-import {Box,SimpleGrid,Heading} from "@chakra-ui/react"
+import React from 'react';
+import { Box, SimpleGrid, Heading, Card, CardHeader, CardFooter, CardBody, Text, Center } from "@chakra-ui/react";
+import Axios from "axios";
+import { useLoaderData } from 'react-router-dom';
 
-function TaskDone() {
+export default function TodoTask() {
+  
+
+  const tasks = useLoaderData();
+  console.log(tasks.data);
+
   return (
     <div>
-        <Heading>Task done </Heading>
-        <SimpleGrid columns={4} spacing={10} mt="xl" minChildWidth="250px">
-           
-        <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
+    
+      <Box display="flex" justifyContent="center" alignItems="center" h="100vh">
+        <SimpleGrid
+          spacing={6}
+          minChildWidth="300px"
+          bg="gray.300"
+          w="80%"
+          p="2rem"
+        >
+          {tasks.data.map(task => (
+            task.taskStatus == "completed" && (
+              <Card key={task.id}>
+                <CardHeader>
+                  <Center><Heading >{task.title}</Heading></Center>
+                </CardHeader>
+                <CardBody>
+                  <Center><Text>Start Date: {task.startDate}</Text></Center>
+                  <Center><Text>Due Date:{task.dueDate}</Text></Center>
+                  <Center><Text>Task Status:{task.taskStatus}</Text></Center>
 
-           
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
+                </CardBody>
 
-            
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-
-            
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-            <Box bg="white" h="200px" border="1px"  boxShadow='dark-lg' p='6' borderRadius="10px"></Box>
-
+              </Card>
+            )
+          ))}
         </SimpleGrid>
-
-
-
-
-
-
-
-
+      </Box>
     </div>
-  )
+  );
 }
 
-export default TaskDone
+export const taskLoader = async (req, res) => {
+  try {
+    const response = await Axios.get("http://localhost:4000/api/getTask");
+    return response.data;
+  } catch (error) {
+    // console.log(error);
+    throw new Error("Error loading tasks");
+  }
+};
+
+
+
+

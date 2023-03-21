@@ -1,27 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import Addtask from './Addtask';
 import Header from './Header';
-import { Box,Switch,
-    useColorMode,
-    useColorModeValue,Heading,FormControl,FormLabel} from "@chakra-ui/react"
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+
 function Home(props) {
-
-    return (
-        <>
-        <Header/>
-      <Addtask/>
-
+  return (
+    <>
+      <Header />
+      <Addtask />
     </>
-    )
+  )
 }
 export default Home
-  
-       
-       
-     
-     
-        
-          
 
-      
+
+
+
+
+
+
+
+
+
+

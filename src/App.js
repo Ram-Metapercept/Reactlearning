@@ -1,49 +1,61 @@
-import React,{useEffect,useState,useNavigate} from 'react'
+import React, { useEffect, useState, useNavigate } from 'react'
 import SignUp from './components/SignUp'
 import SignIn from './components/SignIn'
 import Home from './components/Home';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {auth} from "./firebase"
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider, Routes, BrowserRouter
+} from "react-router-dom";
+import { auth } from "./firebase"
 import Addtask from './components/Addtask';
-import TodoTask from './components/TodoTask';
+import TodoTask, { taskLoader } from './components/TodoTask';
 import InProgress from './components/InProgress';
 import TaskDone from "./components/TaskDone"
-function App() {
-  const [userName,setUserName]=useState("")
-  
 
-  useEffect(()=>{
-    auth.onAuthStateChanged((user)=>{
-      if(user){
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Outlet />}>
+      <Route path="/" element={<SignIn />} />
+      <Route path="/signUp" element={<SignUp />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/addtask" element={<Addtask />} />
+      <Route path="/todoTask" element={<TodoTask />} loader={taskLoader} errorElement={<div>Failed to load task data</div>} />
+      <Route path="/inProgress" element={<InProgress />} loader={taskLoader} errorElement={<div>Failed to load task data</div>} />
+      <Route path="/taskDone" element={<TaskDone />} loader={taskLoader} errorElement={<div>Failed to load task data</div>} />
+
+
+    </Route>
+  )
+);
+
+
+
+
+
+
+function App() {
+  const [userName, setUserName] = useState("")
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
         setUserName(user.displayName)
-      }else{
+      } else {
         setUserName("")
       }
     })
-  },[])
+  }, [])
   return (
     <div>
-
-        <BrowserRouter>
-        <Routes>
-         
-          <Route path="/" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/addtask" element={<Addtask />} />
-          <Route path="/todoTask" element={<TodoTask />} />
-          <Route path="/inProgress" element={<InProgress />} />
-          <Route path="/taskDone" element={<TaskDone />} />
-
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />;
     </div>
   )
 }
 export default App
-      
-     
 
 
-
-       

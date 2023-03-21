@@ -7,12 +7,6 @@ import {
 } from "@chakra-ui/react"
 import { auth } from "../firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
-// import { Link as ReachLink } from "@reach/router"
-{/* <Link as={ReachLink} to='/home'>
-    Home
-</Link> */}
-
-
 function SignIn() {
     const [value, setValue] = useState({
         email: "",
@@ -39,35 +33,13 @@ function SignIn() {
         })
     }
     return (
-
         <div>
             <form action="submit">
-                {/* 
-                <Box display='flex'
-                    alignItems='center'
-                    justifyContent='center'
-                    maxWidth="500px"
-                    width='20%'
-                    mx={700}
-                    borderWidth={1}
-                    rounded='lg' bg='formBackground'
-                    borderRadius="8"
-                    height="550px"
-                    my={200}
-                    opacity="1.2"
-                    p={8}
-                    boxShadow='dark-lg'
-
-                > */}
                 <Box display='flex'
                     alignItems='center'
                     justifyContent='center'
                     h="100vh"
-
-
                     rounded='lg' bg='formBackground'
-
-
                     border="xl"
                     boxShadow='dark-lg' p='6'>
                     <Box boxShadow='dark-lg' p='6' borderRadius="md">
@@ -75,7 +47,6 @@ function SignIn() {
                         <Stack spacing={3} p={30}>
                             <FormControl isRequired>
                                 <Heading ml={50} mb="5" fontSize="30">Sign In</Heading>
-
                                 <FormLabel>Email</FormLabel>
                                 <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
                             </FormControl>
@@ -134,6 +105,13 @@ export default SignIn
 
 
 
+
+
+
+
+
+
+                    
 
 
 
