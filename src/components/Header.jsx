@@ -1,6 +1,7 @@
-import { Box, Image, Flex, Button, HStack, chakra, Stack, Text } from '@chakra-ui/react';
+import { Box, Image, Flex, Button, HStack, chakra } from '@chakra-ui/react';
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+// this is header component in this i have used useNavigate hook to navigate to other page 
 export default function Header() {
   const navigate = useNavigate()
   const handleLogOut = () => {
@@ -35,9 +36,7 @@ export default function Header() {
           </HStack>
         </Flex>
       </nav>
-
-
-    </Box>
+</Box>
   )
 }
 

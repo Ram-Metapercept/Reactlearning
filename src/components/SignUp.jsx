@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import {
-    Box, Button, Stack, FormControl, FormLabel, Input, Switch,
-    useColorMode,
+    Box, Button, Stack, FormControl, FormLabel, Input, Switch, FormErrorMessage,
+
     useColorModeValue, Heading, Text
 } from "@chakra-ui/react"
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { auth } from "../firebase"
+
 
 function SignUp() {
     const [value, setValue] = useState({
@@ -14,14 +15,15 @@ function SignUp() {
         email: "",
         password: ""
     })
-    const { toggleColorMode } = useColorMode();
-    const formBackground = useColorModeValue('gray.100', 'gray.700');
+
+    const formBackground = useColorModeValue('gray.100');
     const navigate = useNavigate()
     const [errorMsg, setErrorMsg] = useState("")
     const handleSubmission = () => {
-        // checking all fields are filled or not 
+        // checking all fields are filled or not
         if (!value.userName || !value.email || !value.password) {
-            return <h1> {setErrorMsg(alert("fill all fields"))}</h1>
+            setErrorMsg("Please fill all fields")
+            return
         }
         setErrorMsg("")
         // implementation of firebase authentication for signUp
@@ -32,95 +34,57 @@ function SignUp() {
             })
             navigate("/signIn")
         }).catch((err) => {
-            setErrorMsg(alert(err.message))
+            setErrorMsg(err.message)
         })
     }
     return (
-        <div>
-            <form action="submit">
-                <Box display='flex'
-                    alignItems='center'
-                    justifyContent='center'
-                    h="100vh"
-                    rounded='lg' bg='formBackground'
-                    borderRadius="md"
-                >
-                    <Box border="xl"
-                        boxShadow='dark-lg' p='6' borderRadius="md" >
-                        <Stack spacing={3} p={10}>
-                            <FormControl isRequired>
-                                <Heading ml="10" fontSize="30" mb="5">Sign Up</Heading>
-                                <FormLabel>User Name</FormLabel>
-                                <Input type="text" placeholder='UserName' onChange={e => setValue(prev => ({ ...prev, userName: e.target.value }))} />
-                            </FormControl>
-                            <FormControl isRequired>
-                                <FormLabel>Email</FormLabel>
-                                <Input type="email" placeholder='Email' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
-                            </FormControl>
-                            <FormControl isRequired>
-                                <FormLabel>Password</FormLabel>
-                                <Input type="password" placeholder='Password' mb="10" onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
-                            </FormControl>
-                            <Stack direction='row' spacing={10} align='center' w="full" >
-                                <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" mt="-5" onClick={handleSubmission}>
-                                    Sign Up
-                                </Button>
-                            </Stack>
-                            {/* used for switching to dark mode */}
-                            <FormControl display="flex" alignItems="center">
-                                <FormLabel htmlFor="dark_mode" mb="0">
-                                    Enable Dark Mode?
-                                </FormLabel>
-                                <Switch
-                                    id="dark_mode"
-                                    colorScheme="teal"
-                                    size="lg"
-                                    onChange={toggleColorMode}
-                                />
-                            </FormControl>
-                            <Text>Already Registered ?<Link to="/" >SignIn</Link> <br /></Text>
-                        </Stack>
-                    </Box>
-                </Box>
-            </form>
-        </div>
+<>
+      
+        <Box display='flex'
+            alignItems='center'
+            justifyContent='center'
+            h="100vh"
+            bg={formBackground}
+        >
+            <Box border="xl"
+                boxShadow='dark-lg' p='6' borderRadius="md" maxW={{ base: "90%", md: "80%", lg: "50%" }}>
+                <Stack spacing={3} p={{ base: 4, md: 10 }}>
+                    <FormControl isRequired isInvalid={!value.userName}>
+                        <Heading fontSize={{ base: "xl", md: "3xl" }} mb="5">Sign Up</Heading>
+                        <FormLabel>User Name</FormLabel>
+                        <Input type="text" placeholder='UserName' onChange={e => setValue(prev => ({ ...prev, userName: e.target.value }))} />
+                        {!value.userName && (
+                            <FormErrorMessage>UserName is required.</FormErrorMessage>
+                        )}
+                    </FormControl>
+                    <FormControl isRequired isInvalid={!value.email}>
+                        <FormLabel>Email</FormLabel>
+                        <Input type="email" placeholder='abc@gmail.com' onChange={e => setValue(prev => ({ ...prev, email: e.target.value }))} />
+                        {!value.email && (
+                            <FormErrorMessage>Email is required.</FormErrorMessage>
+                        )}
+                    </FormControl>
+                    <FormControl isRequired isInvalid={!value.userName}>
+                        <FormLabel>Password</FormLabel>
+                        <Input type="password" placeholder='Password' mb={{ base: 4, md: 10 }} onChange={e => setValue(prev => ({ ...prev, password: e.target.value }))} />
+                        {!value.password && (
+                            <FormErrorMessage>Password is required.</FormErrorMessage>
+                        )}
+                    </FormControl>
+                    <Stack direction={{ base: "column", md: "row" }} justify="space-between" align="center" >
+                        <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w="full" onClick={handleSubmission}>
+                            Sign Up
+                        </Button>
+
+                    </Stack>
+
+                    <Text>Already Registered ?<Link to="/" >SignIn</Link> <br /></Text>
+                </Stack>
+            </Box>
+        </Box>
+        </>
+
     )
 }
 export default SignUp
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
