@@ -3,7 +3,7 @@ import { Box, Flex, Grid, Heading, Card, CardHeader, CardBody, Text, Center, Men
 import axios from "axios";
 import { useLoaderData } from 'react-router-dom';
 import Header from './Header';
-import {  } from "@chakra-ui/icons"
+
 
 const Completed = () => {
   const tasks = useLoaderData();
@@ -18,7 +18,7 @@ const handleStatusUpdate = (taskId, taskStatus) => {
       });
   };
 return (
-    <Box w="100%">
+    <Box w="100%" bg="white">
     <Header />
     <Flex justifyContent="center" h="60vh">
       <Grid templateColumns={["1fr", "repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={6} w={["90%", "80%", "70%"]} p="2rem">
@@ -57,6 +57,7 @@ return (
 }
 
 export default Completed;
+
 export const taskLoader = async (req, res) => {
   try {
     const response = await axios.get("http://localhost:4000/api/getTask");

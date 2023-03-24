@@ -1,5 +1,6 @@
 import { Box, Image, Flex, Button, HStack, chakra } from '@chakra-ui/react';
 import { Link, useNavigate } from "react-router-dom";
+
 import React from "react";
 // this is header component in this i have used useNavigate hook to navigate to other page 
 export default function Header() {
@@ -20,7 +21,7 @@ export default function Header() {
           borderColor="gray.300"
         >
           <Flex align="center">
-            <Image src="../logo/logo.jpg" width={50} height={50} />
+            <Image src="https://t.ly/oWmM" bg="blue.200" alt="Metapercept" width={70}  rounded="5px" height={50}   />
             <chakra.span fontSize={{ base: "lg", sm: "2xl" }} fontWeight="bold" ml="2">Task Manager</chakra.span>
           </Flex>
           <Box display={{ base: "block", md: "none" }} mr="4">
@@ -32,7 +33,7 @@ export default function Header() {
             <Link to="/taskDone" >Tasks Done</Link>
           </HStack>
           <HStack display={{ base: "none", md: "flex" }}>
-            <Button onClick={handleLogOut} variant="ghost" colorScheme="teal">Log out</Button>
+            <Button onClick={handleLogOut} variant="ghost" colorScheme="teal" bg="tomato">Log out</Button>
           </HStack>
         </Flex>
       </nav>
