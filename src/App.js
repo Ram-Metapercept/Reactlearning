@@ -10,7 +10,7 @@ import {
   RouterProvider
 } from "react-router-dom";
 import { auth } from "./firebase"
-import Addtask from './components/Addtask';
+import Addtask from './components/AddTask';
 import TodoTask, { taskLoader } from './components/TodoTask';
 import InProgress from './components/InProgress';
 import TaskDone from "./components/TaskDone"
