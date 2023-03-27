@@ -21,7 +21,8 @@ export default function Header() {
           borderColor="gray.300"
         >
           <Flex align="center">
-            <Image src="https://t.ly/oWmM" bg="blue.200" alt="Metapercept" width={70}  rounded="5px" height={50}   />
+            <Image src="https://tinyurl.com/yc6awaz2" bg="blue.200" alt="Metapercept" width={110}  rounded="5px" height={50}   />
+           
             <chakra.span fontSize={{ base: "lg", sm: "2xl" }} fontWeight="bold" ml="2">Task Manager</chakra.span>
           </Flex>
           <Box display={{ base: "block", md: "none" }} mr="4">

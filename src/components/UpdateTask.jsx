@@ -1,4 +1,4 @@
-import React,{useRef} from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import Header from './Header';
 import {
@@ -13,46 +13,44 @@ import {
     FormErrorMessage,
     useToast,
 } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+export default function UpdateTask() {
+    const { taskId } = useParams();
+ 
 
-export default function AddTask() {
     const {
         handleSubmit,
         register,
-        reset,
         formState: { errors, isSubmitting },
     } = useForm();
     const toast = useToast();
-    const formRef = useRef(null);
     const onSubmit = (values) => {
         toast({
-
-            title: 'Task Added.',
-            description: 'Task added Succesfully.',
-            status: 'success',
-            duration: 5000,
-            isClosable: true,
+          title: 'Task Updated.',
+          description: 'Task updated Successfully.',
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
         });
-
+    
         // Send the form data to the backend using the fetch() function
-        fetch('http://localhost:4000/api/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
+        fetch(`http://localhost:4000/api/updateTask/${taskId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
         })
-            .then((response) => response.json())
-            .then((data) => {
-                // Handle the response from the backend
-                console.log(data);
-                // alert('Task added successfully!');
-                formRef.current.reset(); 
-            })
-            .catch((error) => {
-                // Handle any errors that occur during the request
-                console.error(error);
-                alert('there is an error while adding the task. Please try again after sometime.');
-            });
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the response from the backend
+            console.log(data);
+          })
+          .catch((error) => {
+            // Handle any errors that occur during the request
+            console.error(error);
+            alert('there is an error while updating the task. Please try again after sometime.');
+          });
     };
 
     return (
@@ -60,20 +58,14 @@ export default function AddTask() {
             <Header />
             <Flex justify="center" align="center" height="80vh" bg="white" px={{ base: 4, md: 8 }}>
                 <Box width={{ base: "sm", md: 'md' }} rounded="lg" bg="white" px={{ base: 4, md: 8 }} py={12} boxShadow="2xl">
-                    <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack spacing={3}>
                             <FormControl isInvalid={errors.title}>
                                 <FormLabel htmlFor="title">Title</FormLabel>
                                 <Input
                                     id="title"
                                     placeholder="Title"
-                                    {...register('title', {
-                                        required: 'This is required',
-                                        minLength: {
-                                            value: 4,
-                                            message: 'Minimum length should be 4',
-                                        }
-                                    })}
+                                    {...register('title')}
                                 />
                                 <FormErrorMessage>{errors.title && errors.title.message}</FormErrorMessage>
                             </FormControl>
@@ -82,7 +74,7 @@ export default function AddTask() {
                                 <Input
                                     id="startDate"
                                     type="date"
-                                    {...register('startDate', { required: 'Start Date is required' })}
+                                    {...register('startDate')}
                                 />
                                 <FormErrorMessage>{errors.startDate && errors.startDate.message}</FormErrorMessage>
                             </FormControl>
@@ -91,7 +83,7 @@ export default function AddTask() {
                                 <Input
                                     id="dueDate"
                                     type="date"
-                                    {...register('dueDate', { required: 'Due Date is required is required' })}
+                                    {...register('dueDate', { required: 'Due Date is required ' })}
                                 />
                                 <FormErrorMessage>{errors.dueDate && errors.dueDate.message}</FormErrorMessage>
                             </FormControl>
@@ -113,7 +105,7 @@ export default function AddTask() {
                             </FormControl>
 
                             <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w='full' isLoading={isSubmitting} type='submit'>
-                            Add Task </Button>
+                                Update </Button>
                         </Stack>
                     </form>
                 </Box>

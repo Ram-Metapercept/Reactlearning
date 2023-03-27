@@ -23,14 +23,14 @@ export default function SignUp() {
     formState: { errors, isSubmitting },
   } = useForm()
 
- 
+
   const navigate = useNavigate()
 
   const onSubmit = (values) => {
     const { userName, email, password } = values
 
     // checking all fields are filled or not
-    if (!userName||!email ||!password) {
+    if (!userName || !email || !password) {
       return
     }
 
@@ -49,13 +49,13 @@ export default function SignUp() {
   }
 
   return (
-   
+
     <Box
       display='flex'
       alignItems='center'
       justifyContent='center'
       h='80vh'
-     
+
     >
       <Box
         border='xl'
@@ -72,8 +72,7 @@ export default function SignUp() {
         >
           <FormControl isInvalid={errors.userName}>
             <Heading fontSize={{ base: 'xl', md: '3xl' }} mb='5'>
-                <Center> Sign Up</Center>
-             
+              <Center> Sign Up</Center>
             </Heading>
             <FormLabel>User Name</FormLabel>
             <Input
@@ -90,12 +89,13 @@ export default function SignUp() {
             <Input
               type='email'
               placeholder='abc@gmail.com'
-             {...register('email', {
-                    required: 'email is required',
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: 'Invalid email address',
-                    }})}
+              {...register('email', {
+                required: 'email is required',
+                pattern: {
+                  value: /\S+@\S+\.\S+/,
+                  message: 'Invalid email address',
+                }
+              })}
             />
             <FormErrorMessage>
               {errors.email && errors.email.message}
@@ -118,16 +118,18 @@ export default function SignUp() {
             </FormErrorMessage>
           </FormControl>
           <Stack direction={{ base: 'column', md: 'row' }} justify='space-between' align='center'>
-            <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w='full' isLoading={isSubmitting} type='submit'>  
+            <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w='full' isLoading={isSubmitting} type='submit'>
               Sign Up
             </Button>
           </Stack>
           <Text>
-            Already Registered ?<Link to='/'>SignIn</Link> <br />  
+            Already Registered ?<Link to='/'>SignIn</Link> <br />
           </Text>
-        </Stack> 
+        </Stack>
       </Box>
-      </Box>
-    
-  )}
+    </Box>
+
+  )
+}
+
 
