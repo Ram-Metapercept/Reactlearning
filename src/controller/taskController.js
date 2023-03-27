@@ -7,8 +7,9 @@ const {isValid}=require("../validation/validation")
 exports.addTask=async(req,res)=>{
     try{
         let data=req.body
-        let {title,startDate,dueDate,taskStatus,priority}=data
-        data.taskStatus="ToDo" // set default value for taskStatus
+        let {title,startDate,dueDate,taskStatus,priority,isDeleted}=data
+        data.taskStatus="ToDo"
+        data.isDeleted=false// set default value for taskStatus
 
 
        
@@ -66,7 +67,33 @@ exports.getTask=async function (req,res){
           }
       
       }
-      
+// -----------------------------get by Task Id-------------------------------------
+  
+  exports.getTaskById=async function (req,res) {
+    try{
+    const taskId = req.params.taskId;
+ 
+  
+    const doc = await Task.doc(taskId).get();
+  
+    if (!doc) {
+      throw new Error('Task not found');
+    }
+  
+    const taskData = doc.data();
+    return res.status(200).send({status:true,msg:"success",data:{
+      id: doc.id,
+      ...taskData
+    }})
+}
+catch (error) {
+    console.log("This is the error :", error.message)
+    return res.status(500).send({ msg: "Error", error: error.message })
+}
+
+
+  }
+
 //-----------------------------------------------------To update task----------------------------------------------------------
       exports.updateTask=async function (req,res){
       
@@ -75,7 +102,7 @@ exports.getTask=async function (req,res){
         
           const taskId=req.params.taskId
        
-          delete req.body.id
+      
            let updateData = await Task.doc(taskId).update(req.body)
       
            return res.status(200).send({ status: "true", message: "Successfulluy data updated", data: updateData })
@@ -88,12 +115,12 @@ exports.getTask=async function (req,res){
      //-----------------------------------------------------To delete task----------------------------------------------------------
         
         exports.deleteTask=async function (req,res){
-            const id=req.body.id
+            const taskId=req.params.taskId
         
             try{
             data=req.body
-        
-           let deletedData= await Task.doc(id).delete()
+       
+           let deletedData= await Task.doc(taskId).delete(data)
           
            return res.status(200).send({ status: "true", message: "Successfully deleted"})
            
@@ -105,5 +132,3 @@ exports.getTask=async function (req,res){
         }
 
       
-
-
