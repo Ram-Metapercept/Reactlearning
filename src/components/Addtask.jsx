@@ -1,4 +1,4 @@
-import React,{useRef} from 'react';
+import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import Header from './Header';
 import {
@@ -45,8 +45,7 @@ export default function AddTask() {
             .then((data) => {
                 // Handle the response from the backend
                 console.log(data);
-                // alert('Task added successfully!');
-                formRef.current.reset(); 
+                formRef.current.reset();
             })
             .catch((error) => {
                 // Handle any errors that occur during the request
@@ -101,7 +100,7 @@ export default function AddTask() {
                                     id="priority"
                                     placeholder="Select your priority"
                                     {...register('priority', { required: 'Priority is required' })}
-                                    >
+                                >
                                     <option value='Highest'>Highest</option>
                                     <option value='High'>High</option>
                                     <option value='Low'>Low</option>
@@ -111,9 +110,8 @@ export default function AddTask() {
                                     {errors.priority && errors.priority.message}
                                 </FormErrorMessage>
                             </FormControl>
-
                             <Button colorScheme='teal' variant='solid' borderRadius='5' bg='tomato' w='full' isLoading={isSubmitting} type='submit'>
-                            Add Task </Button>
+                                Add Task </Button>
                         </Stack>
                     </form>
                 </Box>

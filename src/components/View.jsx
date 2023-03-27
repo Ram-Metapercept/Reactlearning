@@ -21,19 +21,16 @@ const View = () => {
         console.error(err);
       });
   };
-
   // used menu  user click on three dots to update taskStatus 
   return (
     <Box w="100%">
       <Header />
       <Flex justifyContent="center" h="60vh" >
-        <Grid templateColumns={["1fr"]} gap={6} w="auto"  h="40vh"p="3rem">
-
+        <Grid templateColumns={["1fr"]} gap={6} w="auto" h="40vh" p="3rem">
           {tasks.data.map(task => (
-            task.isDeleted===false &&task.id===taskId && (
+            task.isDeleted === false && task.id === taskId && (
               <Card key={task.id}>
                 <CardHeader display="flex" justifyContent="space-between" alignItems="center">
-
                   <Menu>
                     <MenuButton as={IconButton} icon={<i className="fas fa-ellipsis-v">...</i>} bg="gray.100" size="xs" variant="ghost" ml="auto" />
                     <MenuList>
@@ -52,9 +49,7 @@ const View = () => {
                 <Center><Heading size="md">{task.title}</Heading></Center>
                 <CardBody alignItems="center" justifyContent="space-between">
                   <Center><Text>Start Date: {task.startDate}</Text></Center>
-              
                   <Center><Text>Due Date: {task.dueDate}</Text></Center>
-   
                   <Center><Text>Status: {task.taskStatus}</Text></Center>
                 </CardBody>
               </Card>

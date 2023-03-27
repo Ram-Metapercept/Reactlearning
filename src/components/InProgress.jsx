@@ -58,8 +58,7 @@ const InProgress = () => {
           </Grid>
         </Flex>
       </Box>
-  
-    );
+  );
   }
   export default InProgress;
   //this is taskLoader which is passed as prop in the toDo component
