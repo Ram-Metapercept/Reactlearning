@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from './Header';
 import AddTask from "./AddTask"
 
-function Home(props) {
+function Home() {
   const [showHeader, setShowHeader] = useState(false);
 
   return (
