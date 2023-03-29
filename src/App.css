@@ -1,38 +1,98 @@
-/* .App {
+.my-custom-hr{
+  width: 50px;
+height: 2px;
+margin-right: auto;
+margin-left: auto;
+}
+
+.subtitle{
+  letter-spacing: 0.02em;
+}
+.message-section{
+  height: 500px;
+}
+.img-fluid{
+  max-width: 100%;
+  height: auto;
+
+}
+
+.service-title{
+  text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
+    padding-bottom: 1rem;
+    line-height: 1;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+.bg-image {
+ 
+  background-image: url('./Assets/—Pngtree—modern\ double\ color\ futuristic\ neon_1181573.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height:50vh
+}
+.home-small-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+}
+
+.home-title {
+  font-size: 46px;
+  line-height: 64px;
+}
+
+.play-shadow {
+  border-radius: 50%;
+  border: 1px solid transparent;
+  width: 82px;
+  height: 82px;
+  margin: 20px auto 0px auto;
+}
+.play-btn {
+  border: 2px solid;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: block;
+  font-size: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 56px;
+  margin-top: 10px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.section-feature{
+  width: 100%;
+  height: 70vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.img-1{
+  /* border-radius: 50%; */
+
+  border-radius: 50%!important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.bg-image1 {
+ 
+  background-image: url('./Assets/—Pngtree—modern\ double\ color\ futuristic\ neon_1181573.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height:40vh
 }
 
-.App-link {
-  color: #61dafb;
+.footer-section{
+  background-color: black;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.footer{
+  background-color: aquamarine;
+}
+.buttonGroup{
+  background-color:gray;
+}

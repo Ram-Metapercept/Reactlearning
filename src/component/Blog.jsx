@@ -4,14 +4,15 @@ import {Link} from "react-router-dom"
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import '../App.css';
 
 function GroupExample() {
   return (
     <>
-    <Container justify-content-center align-item-center>
+    <Container justify-content-center align-item-center id="blog">
    < Container  className='text-center'>
     <h1>LATEST NEWS</h1><br />
-   <hr className='success w="10px"'/><br />
+    <hr className='my-custom-hr'/>
     <p className="text-muted" >Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean class at a euismod mus luctus quam.</p>
     </Container><br /><br />
     <Row xs={1} md={4} className="g-4">

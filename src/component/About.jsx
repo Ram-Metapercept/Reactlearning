@@ -68,7 +68,7 @@ import Row from 'react-bootstrap/Row';
 function GroupExample() {
   return (
     <>
-      <Container className='justify-content-center align-item-center'><br /><br />
+      <Container className='justify-content-center align-item-center'  id="about"><br /><br />
         <h1 className='text-center'>A Digital web studio creating stunning & Engaging online Experiences</h1><br /><br />
         <p className='text-center text-muted'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nasceturridiculus mus donec various versions have evolved quam felis.</p>
         <Stack direction='horizontal'>
