@@ -1,41 +1,30 @@
-import React from 'react'
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Image from 'react-bootstrap/Image'
-import Button from "react-bootstrap/Button"
+import React from 'react';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import '../App.css';
+import { ArrowRight } from 'react-bootstrap-icons';
+
 function Feature() {
   return (
-    <>
-    <Container id="feature" className='section-feature'>
-
-      <Row>
-        <Col>
-        <h1>A digital web design studio creating modern & engaging online</h1>
-        <p className='text-muted font-secondary '>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-        <ul className='text-muted font-secondary'>
-          <li>We put a lot of effort in design.</li>
-          <li>The most important ingredient of successful website.</li>
-          <li>Submit Your Orgnization.</li>
-        </ul>
+    <div className="home2" id="feature">
+    <Container  className='section-feature'>
+      <Row className='align-items-center'>
+        <Col md={6}>
+          <h1>A digital web design studio creating modern & engaging online</h1>
+          <p className='text-muted font-secondary '>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+          <ul className='text-muted font-secondary'>
+            <li>We put a lot of effort in design.</li>
+            <li>The most important ingredient of successful website.</li>
+            <li>Submit Your Orgnization.</li>
+          </ul>
+          <Button variant="success" style={{ width: '150px' }}><a href="#" style={{ textDecoration: 'none', color:"white"}}>Learn More <ArrowRight/></a>  </Button>
         </Col>
-        <Col> <Image  width={500}
-        height={359}
-        alt="171x180" src='https://tinyurl.com/4u2twya3'
-        className='img-fluid'></Image></Col>
-
-      
+        <Col md={6} className='text-center'>
+          <Image src='https://tinyurl.com/4u2twya3' fluid alt='171x180' />
+        </Col>
       </Row>
-      <Button variant="success"  style={{ width: '150px' }}> Learn More</Button>
     </Container>
-    
-    
-    
-    
-    
-    </>
-  )
+    </div>
+  );
 }
 
-export default Feature
+export default Feature;
