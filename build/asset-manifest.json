@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.17406d42.css",
+    "main.js": "/static/js/main.59270ef7.js",
+    "static/media/—Pngtree—modern double color futuristic neon_1181573.jpg": "/static/media/—Pngtree—modern double color futuristic neon_1181573.69a9f01ad68b33d410e7.jpg",
+    "index.html": "/index.html",
+    "main.17406d42.css.map": "/static/css/main.17406d42.css.map",
+    "main.59270ef7.js.map": "/static/js/main.59270ef7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17406d42.css",
+    "static/js/main.59270ef7.js"
+  ]
+}
