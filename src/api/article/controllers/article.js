@@ -23,21 +23,14 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::article.article');
 
-module.exports = {
+// module.exports = {
 
-  async create(ctx) {
-    // console.log(ctx.request.body)
-    return await strapi.services["api::article.article"].create(ctx.request.body);
-  }
-};
+//   async create(ctx) {
+//     // console.log(ctx.request.body)
+//     return await strapi.services["api::article.article"].create(ctx.request.body);
+//   }
+// };
 
-module.exports = {
-
-  async find(ctx) {
-    // console.log(ctx.request.body)
-    return await strapi.services["api::article.article"].find();
-  }
-};
 
 // const { createCoreController } = require('@strapi/strapi').factories;
 

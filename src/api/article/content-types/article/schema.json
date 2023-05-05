@@ -50,6 +50,10 @@
       "relation": "manyToOne",
       "target": "api::author.author",
       "inversedBy": "articles"
+    },
+    "isArchived": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

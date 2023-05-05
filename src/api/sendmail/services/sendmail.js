@@ -69,33 +69,33 @@ const userPass = process.env.MYPASS
 
 
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'kashyapatcae@gmail.com',
-    pass: 'sjxsaatxromjmnxg',
-  },
-});
-  console.log("kjhf")
-async function sendMail(from,to, subject, text) {
-  const options = {
-    from: 'kashyapatcae@gmail.com',
-    to: "ramgkp6@gmail.com",
-    subject: "subscribed email",
-    text: "welcome to India",
-  };
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: 'kashyapatcae@gmail.com',
+//     pass: 'sjxsaatxromjmnxg',
+//   },
+// });
+//   console.log("kjhf")
+// async function sendMail(from,to, subject, text) {
+//   const options = {
+//     from: 'kashyapatcae@gmail.com',
+//     to: "ramgkp6@gmail.com",
+//     subject: "subscribed email",
+//     text: "welcome to India",
+//   };
 
-  try {
-    await transporter.sendMail(options);
+//   try {
+//     await transporter.sendMail(options);
   
-    console.log(`Email sent to ${to}`);
-  } catch (err) {
-    console.error(err);
-  }
-}
+//     console.log(`Email sent to ${to}`);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
-module.exports = {
-  send: sendMail,
-};
+// module.exports = {
+//   send: sendMail,
+// };
 
 
