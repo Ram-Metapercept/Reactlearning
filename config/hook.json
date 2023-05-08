@@ -1,0 +1,15 @@
+{
+    "hook_definitions": {
+      "send_email_on_new_article": {
+        "webhook": {
+          "handler": "api/sendinblue/sendinblue.send_email_on_new_article",
+          "events": {
+            "entry.create": {
+              "action": "send_email"
+            }
+          }
+        }
+      }
+    }
+  }
+  
